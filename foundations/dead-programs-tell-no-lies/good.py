@@ -22,6 +22,10 @@ class ETL:
         for dato in self.datos:
             if not isinstance(dato, str):
                 raise ValueError("Todos los elementos deben ser cadenas")
+            # Notar como se agrega otrae excepcion al codigo original, pero
+            # eso ya no nos afecta ya que no debemos capturarlo
+            if dato == "unknown":
+                raise RuntimeError("El elemento no puede ser desconocido")
         return [Texto(dato) for dato in self.datos]
 
     def transformar(self, texto: Texto) -> Texto:
@@ -48,5 +52,10 @@ if __name__ == "__main__":
 
     # Lanza error, lo impensado ocurrio
     datos_crudos_malos = ["Hola", "Mundo", 123]
+    etl = ETL(datos_crudos_malos)
+    etl.main()
+
+    # Lanza error, el dato "unknown" no es valido
+    datos_crudos_malos = ["Hola", "Mundo", "unknown"]
     etl = ETL(datos_crudos_malos)
     etl.main()
