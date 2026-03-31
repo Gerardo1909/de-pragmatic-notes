@@ -1,0 +1,7 @@
+[project]
+name = "de-pragmatic-notes"
+version = "0.1.0"
+description = "Here I write down my notes about software and data engineering"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
